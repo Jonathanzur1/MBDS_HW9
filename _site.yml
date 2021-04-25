@@ -1,7 +1,7 @@
 name: "Jonathan Zur HW9"
 output_dir: "."
 navbar:
-  title: "Zur HW9"
+  title: "JZur HW9"
   left:
     - text: "Home"
       href: index.html
