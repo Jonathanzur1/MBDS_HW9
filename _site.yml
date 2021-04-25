@@ -1,17 +1,17 @@
 name: "Jonathan Zur HW9"
 output_dir: "."
 navbar:
-..title: "Zur HW9"
-..left:
-....-.text: "Home"
-......href: index.html
-....-.text: "Project"
-......href: project.html
-....-.text: "About"
-......href: about.html
+  title: "Zur HW9"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Project"
+      href: project.html
+    - text: "About"
+      href: about.html
 
 output:
-..html_document:
-....theme: simplex
-....highlight: textmate
+  html_document:
+    theme: simplex
+    highlight: textmate
 
