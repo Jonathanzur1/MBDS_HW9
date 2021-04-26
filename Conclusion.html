@@ -17,7 +17,7 @@
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -114,33 +114,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 41px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 46px;
-  margin-top: -46px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h2 {
-  padding-top: 46px;
-  margin-top: -46px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 46px;
-  margin-top: -46px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 46px;
-  margin-top: -46px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 46px;
-  margin-top: -46px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 46px;
-  margin-top: -46px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .dropdown-submenu {
   position: relative;
@@ -314,24 +314,19 @@ $(document).ready(function () {
 </div>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="result-conclusions" class="section level3">
+<h3>Result Conclusions</h3>
+<p>To assess our model, we test it with data that was not included to train the algorithm. We then compute a number of Confusion Matrices and test it with new tweets from the two users as well with tweets from unrelated users. CFs show algorithm is better at predicting tweets by Boris Johnson compared to those by AOC. We see that the model has a better accuracy for predicting BJ tweets than AOC (when comparing the predicted vs true tweet axes). Perhaps this is because AOC uses broader language when she tweets. When testing the model manually, we find that the model is pretty accurate: we test 10 tweets (5 by BJ and 5 by AOC) and we find that the model accurately predicts 7/10 (~70% accuracy) When we tested Tweets from unrelated users, we found that the model behaves as expected. Because AOC uses a wider spectrum of words, many of the tweets were attributed to her by the algorithm. Even Tweets which contain content which would normally be associated with BJ were attributed to AOC. In this sense, the model ‘breaks’ when we test it with tweets by unrelated users.</p>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="Conclusion_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="overall-conclusions" class="section level3">
+<h3>Overall Conclusions</h3>
+<p>In conclusion, we find that our algorithm is able to predict whether a given tweet was more likely tweeted by Boris Johnson or AOC with an accuracy of about 70%. This is both consistent with the results from the Confusion Matrices and with our manual test.</p>
+<p>As postulated, both politicians commonly commented on a key international issue. “COVID” was one of the most used words in tweets from Ocasio-Cortez and “pandemic” was one of Boris Johnson’s most used words.</p>
+<p>However, there were also considerable differences which allowed our algorithm to predict which user a Tweet came from. For instance, Johnson is prime minister of the UK and so one of the most common words in his tweets is UK. In all likelihood, if a tweet contains “ UK “, it was issued by Johnson.</p>
+<p>Interestingly, one of Johnson’s most used words is “great”. While this may not seem significant, the use of the simple adjective in political statements has become a form of statement since Donald Trump adopted the motto “make America great again”.</p>
+<p>Acknowledgments</p>
+<p>This work has been done as part of a class project and it’s the result of teamwork by Nicolle Belaunde, Valentina Cafarelli, Jenifer M. Nemoda, Samira Okudo, and Jonathan Zur.</p>
+<p>Our predictive algorithm is adapted from one of the models we used in class (Lecture 12).</p>
 </div>
 
 

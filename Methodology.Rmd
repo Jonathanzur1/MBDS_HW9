@@ -1,7 +1,7 @@
 ---
 title: "Methodology"
 author: "Jonathan Zur"
-date: "4/23/2021"
+date: "4/25/2021"
 output: html_document
 ---
 
@@ -9,22 +9,58 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R 
+two main steps: (i) a first step in R to get twitter data from our selected users (Boris Johnson and AOC) and (ii) a second step in Python to create the predictive algorithm. 
+(i) Downloading Twitter data in R
+we download 3,200 tweets by Boris Johnson and AOC respectively.  
+We exclude retweets, keep only the variables that we are interested in using to develop our algorithm and select a sample of 200 tweets per user.  
+We merged these two clean datasets into one in order to create an input file that can be used as an input for our algorithm (see ii). 
+The output from this step is a .csv file including 400 tweets (200 tweets per selected user)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+(ii) Creating Algorithm in Python
+We adapt a model used in class to develop an algorithm that allows us to predict whether the author of a given tweet was either Boris Johnson or AOC. 
+The model takes our output from step (i) as an input. The code then splits the data into training and test data, and creates vectorized representations of the tweets
+We then compute a few confusion matrices. This will allow us to assess our model later on (see results). 
+The last two chunks of code allow us to test manually whether a tweet belongs to one or the other individual.
+The output from this step is thus an algorithm able to predict whether a given sentence was more likely tweeted by Boris Johnson or AOC. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-```
 
-## Including Plots
+#recovering tweets from our chosen people: Boris Johnson and AOC
+library(rtweet)
 
-You can also embed plots, for example:
+## select one or more twitter users to lookup
+users <- c("BorisJohnson", "aoc")
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+## get users data
+usr_df <- lookup_users(users)
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## view users data
+usr_df
+
+## view tweet data for these users via tweets_data()
+tweets_data(usr_df)
+
+bj <- get_timeline("BorisJohnson",  n=3200)
+aoc <- get_timeline("aoc", n=3200)
+
+
+library(dplyr)
+
+#selecting only relevant variables ('select')
+#selecting only 200 rows from each person (as in the class exercise)
+
+bj %>%  filter(is_retweet=="FALSE") %>% 
+  select("screen_name","text") %>%  #, "created_at"
+  head(200) -> bj2
+
+aoc %>%  filter(is_retweet=="FALSE") %>% 
+  select("screen_name","text") %>%  #, "created_at"
+  head(200) -> aoc2
+
+#creating one file with tweets from both people
+tweets_hw9 <- union(bj2,aoc2)
+
+tweets_hw9 %>% mutate(id = row_number()) %>% rename(author = screen_name, status = text) -> tweets_hw9_v0.2
+
+#write.csv(tweets_hw9_tidy, "~/V/penn/Spring2021/516/")
+write.csv(tweets_hw9_v0.2, file = "tweets_hw9_tidy.csv")

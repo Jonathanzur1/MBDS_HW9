@@ -9,22 +9,25 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+### Result Conclusions
+To assess our model, we test it with data that was not included to train the algorithm. We then compute a number of Confusion Matrices and test it with new tweets from the two users as well with tweets from unrelated users.
+CFs show algorithm is better at predicting tweets by Boris Johnson compared to those by AOC.
+We see that the model has a better accuracy for predicting BJ tweets than AOC (when comparing the predicted vs true tweet axes). Perhaps this is because AOC uses broader language when she tweets.
+When testing the model manually, we find that the model is pretty accurate: we test 10 tweets (5 by BJ and 5 by AOC) and we find that the model accurately predicts 7/10 (~70% accuracy)
+When we tested Tweets from unrelated users, we found that the model behaves as expected. Because AOC uses a wider spectrum of words, many of the tweets were attributed to her by the algorithm. Even Tweets which contain content which would normally be associated with BJ were attributed to AOC.  In this sense, the model ‘breaks’ when we test it with tweets by unrelated users.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Overall Conclusions
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+In conclusion, we find that our algorithm is able to predict whether a given tweet was more likely tweeted by Boris Johnson or AOC with an accuracy of about 70%. This is both consistent with the results from the Confusion Matrices and with our manual test.
 
-```{r cars}
-summary(cars)
-```
+As postulated, both politicians commonly commented on a key international issue. “COVID” was one of the most used words in tweets from Ocasio-Cortez and “pandemic” was one of Boris Johnson’s most used words. 
 
-## Including Plots
+However, there were also considerable differences which allowed our algorithm to predict which user a Tweet came from. For instance, Johnson is prime minister of the UK and so one of the most common words in his tweets is UK. In all likelihood, if a tweet contains “ UK “, it was issued by Johnson. 
 
-You can also embed plots, for example:
+Interestingly, one of Johnson’s most used words is “great”. While this may not seem significant, the use of the simple adjective in political statements has become a form of statement since Donald Trump adopted the motto “make America great again”. 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+Acknowledgments
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+This work has been done as part of a class project and it’s the result of teamwork by Nicolle Belaunde, Valentina Cafarelli, Jenifer M. Nemoda, Samira Okudo, and Jonathan Zur. 
+
+Our predictive algorithm is adapted from one of the models we used in class (Lecture 12).

@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 author: "Jonathan Zur"
-date: "4/23/2021"
+date: "4/25/2021"
 output: html_document
 ---
 
@@ -9,22 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R 
+Scope: Comparing tweets by Boris Johnson and Alexandria Ocasio-Cortez (AOC). 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+We choose to compare these two individuals because although they are both widely-known politicians, they are reasonably different from each other in their views and thus in the topics/opinions that they share on social media. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+We defined our research question as, “How will the Twitter behavior of Boris Johnson and Alexandra Ocasio-Cortez compare and contrast?”. Specifically, we were interested in understanding how the content of the two politicians differ both in content and in scope. As a prime minister, Boris Johnson is heavily involved in international affairs. Although Alexandra Ocasio-Cortez is not the President of the United States, she has experienced a great deal of social media attention as a young congresswoman and has weighed in on international issues as well. In addition, Johnson and Ocasio-Cortez are seen by the public as more than politicians, each has become a personality and a representative of politics in their respective nations. As Twitter can be used to say a wide variety of things, both political and apolitical, we aimed to understand how these two similar yet very different people used the platform. 
