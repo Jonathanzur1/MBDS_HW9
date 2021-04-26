@@ -8,7 +8,7 @@ navbar:
     - text: "Methodology"
       href: Methodology.html
     - text: "Results"
-      href: Python.html
+      href: Project.html
     - text: "Conclusion"
       href: Conclusion.html
 
